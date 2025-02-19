@@ -116,3 +116,68 @@ SOFTWARE.
 - MongoDB for the database
 - Flask for the backend framework
 - React for the frontend framework
+
+# Design Patterns in Todo App
+
+## Creational Patterns
+
+### Factory Pattern (TodoFactory)
+- **Purpose**: Creates different types of todos with specific properties
+- **Use Cases**: 
+  - Creating tasks with basic properties
+  - Creating reminders with priority
+  - Creating project todos with subtasks
+- **Location**: `src/factories/TodoFactory.ts`
+
+### Singleton Pattern (AppConfig)
+- **Purpose**: Maintains a single configuration instance across the app
+- **Use Cases**:
+  - Managing API URLs
+  - Storing app-wide settings
+  - Maintaining consistent configuration
+- **Location**: `src/config/AppConfig.ts`
+
+## Behavioral Patterns
+
+### Chain of Responsibility (TodoValidators)
+- **Purpose**: Processes todo validation in a chain
+- **Use Cases**:
+  - Validating todo title
+  - Checking due date validity
+  - Extensible validation chain
+- **Location**: `src/validators/TodoValidators.ts`
+
+### Strategy Pattern (TodoFilterStrategy)
+- **Purpose**: Implements different filtering algorithms
+- **Use Cases**:
+  - Filtering active todos
+  - Filtering completed todos
+  - Filtering overdue todos
+- **Location**: `src/strategies/TodoFilterStrategy.ts`
+
+## Structural Patterns
+
+### Decorator Pattern (TodoDecorators)
+- **Purpose**: Adds behavior to todo repository
+- **Use Cases**:
+  - Logging operations
+  - Validating data
+  - Adding cross-cutting concerns
+- **Location**: `src/decorators/TodoDecorators.ts`
+
+## Integration Points
+
+All patterns are integrated in the TodoList component (`src/components/TodoList.tsx`):
+- Factory creates new todos
+- Validators ensure data integrity
+- Strategy handles filtering
+- Decorators manage repository operations
+- Singleton provides configuration
+
+## Testing
+
+Each pattern has corresponding tests in `src/__tests__/`:
+- `TodoFactory.test.ts`
+- `TodoValidators.test.ts`
+- `AppConfig.test.ts`
+- etc.
